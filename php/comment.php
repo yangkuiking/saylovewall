@@ -18,7 +18,7 @@
     public function getComment($link, $posts_id)
     {
       $arr = array();
-      $sql = "SELECT * FROM `saylove_2017_commtents` WHERE posts_id='$posts_id'";
+      $sql = "SELECT * FROM `saylove_2017_commtents` WHERE posts_id='$posts_id' AND ip NOT IN (SELECT ip FROM saylove_2017_blacklist) ";
       $arr_address = mysqli_query($link, $sql);
       $newIP = "";
       while ($row = mysqli_fetch_assoc($arr_address)){
